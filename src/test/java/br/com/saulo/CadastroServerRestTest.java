@@ -77,4 +77,17 @@ public class CadastroServerRestTest {
         WebElement alertElement = driver.findElement(ALERT_ELEMENT);
         Assertions.assertTrue(alertElement.getText().contains("Este email já está sendo usado"));
     }
+
+    @Test
+    @Order(3)
+    @DisplayName("Login no sistema com sucesso")
+    public void testLoginUsuarioCadastradoServerRestTeste() {
+        driver.get(URL);
+        driver.findElement(INPUT_EMAIL).sendKeys("testecomselenium@selenium.com");
+        driver.findElement(INPUT_PASSWORD).sendKeys("1234567");
+        driver.findElement(BTN_ENTRAR).click();
+
+        WebElement BtnLogoutTest = driver.findElement(HEADER_ELEMENT );
+        Assertions.assertTrue(BtnLogoutTest.getText().contains("Bem Vindo "));
+    }
 }
