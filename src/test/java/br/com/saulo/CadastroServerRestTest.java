@@ -90,4 +90,16 @@ public class CadastroServerRestTest {
         WebElement BtnLogoutTest = driver.findElement(HEADER_ELEMENT );
         Assertions.assertTrue(BtnLogoutTest.getText().contains("Bem Vindo "));
     }
+     @Test
+    @Order(4)
+    @DisplayName("Login no sistema com usuário não cadastrado")
+    public void testLoginUsuarioNaocadastrado() {
+        driver.get(URL);
+        driver.findElement(INPUT_EMAIL).sendKeys("123123testecomselenium@selenium.com");
+        driver.findElement(INPUT_PASSWORD).sendKeys("1123");
+        driver.findElement(BTN_ENTRAR).click();
+
+        WebElement BtnLogoutTest = driver.findElement(HEADER_ELEMENT );
+        Assertions.assertTrue(BtnLogoutTest.getText().contains("Email e/ou senha inválidos"));
+    }
 }
